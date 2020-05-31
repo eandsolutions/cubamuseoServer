@@ -59,7 +59,7 @@ export class ImagesService {
             if (level == 3)
                 dir += '/' + folder + '/' + name;
             if (level == 1 || level == 2)
-                dir += '/'  + '/' + folderLevel1 + '/'+folder +'/'+ name;
+                dir += '/' + folderLevel1 + '/'+ folder + '/' + name;
 
         }
         try {

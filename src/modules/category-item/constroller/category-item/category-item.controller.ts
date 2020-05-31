@@ -25,7 +25,7 @@ export class CategoryItemController {
         return this.service.findOne(params.id);
     }
 
-    @Get(':nombre')
+    @Get('byCategory/:nombre')
     getOneByName(@Param() params):any{
         return this.service.findOne(params.nombre);
     }
