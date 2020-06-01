@@ -17,7 +17,7 @@ export class ItemEntity {
     @Column()
     dimension: string;
     @Column()
-    imagenSize: string;
+    imageSize: string;
     @Column()
     emision: string;
     @Column()

@@ -27,7 +27,7 @@ export class CategoryItemController {
 
     @Get('byCategory/:nombre')
     getOneByName(@Param() params):any{
-        return this.service.findOne(params.nombre);
+        return this.service.finAllByCategory(params.nombre);
     }
 
     @Put(':id')
