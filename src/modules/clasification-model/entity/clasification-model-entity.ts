@@ -9,6 +9,6 @@ export class ClasificationModelEntity {
     @Column()
     orden: number;
     @PrimaryGeneratedColumn()
-    idClasfMuesra: number;
+    idClasfMuestra: number;
 }
 

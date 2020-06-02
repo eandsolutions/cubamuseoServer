@@ -23,6 +23,11 @@ export class ModelItemController {
         return this.service.findOne(params.id);
     }
 
+    @Get('byModelId/:id')
+    getByModel(@Param() params): any {
+        return this.service.finAllByModel(params.id);
+    }
+
     @Put(':id')
     update(@Body() data: ModelItem, @Param() params): any {
         return this.service.update(params.id, data);

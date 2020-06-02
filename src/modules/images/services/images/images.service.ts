@@ -52,14 +52,22 @@ export class ImagesService {
 
     getImage(level: number, folder: string, name: string, type: string, folderLevel1: string) {
         let dir = this.imageLocation;
-        console.log("level");
         if (type != "collection") {
-            dir += '/' + type + '/' + folder + '/' + name;
+            if (type == 'samples') {
+                dir += '/Muestras/' + folder + '/' + name
+            } else
+            if(type == 'tales'){
+                dir += '/Estampas/' + folder + '/' + name
+            }else
+            if(type == 'vpost'){
+                dir += '/V-Posts/' + folder + '/' + name
+            }else
+                dir += '/Tienda' +'/'+ folder + '/' + name;
         } else {
             if (level == 3)
                 dir += '/' + folder + '/' + name;
             if (level == 1 || level == 2)
-                dir += '/' + folderLevel1 + '/'+ folder + '/' + name;
+                dir += '/' + folderLevel1 + '/' + folder + '/' + name;
 
         }
         try {
@@ -67,7 +75,7 @@ export class ImagesService {
                 return this.resize(dir, 'jpg');
             } else
                 return this.resize('src/assets/images/Error.jpg', 'jpg');
-            
+
         } catch (e) {
             return this.resize('src/assets/images/Error.jpg', 'jpg');
         }

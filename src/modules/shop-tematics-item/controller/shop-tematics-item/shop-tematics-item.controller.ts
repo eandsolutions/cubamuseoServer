@@ -21,6 +21,12 @@ export class ShopTematicsItemController {
         return this.service.findOne(params.id);
     }
 
+    @Get('byTematic/:id')
+    getByTematic(@Param() params): any {
+        return this.service.finAllByTematic(params.id);
+    }
+
+
     @Put(':id')
     update(@Body() data: ShopTematicsItem, @Param() params): any {
         return this.service.update(params.id, data);

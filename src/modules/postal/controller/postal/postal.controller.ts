@@ -23,6 +23,11 @@ export class PostalController {
         return this.service.findOne(params.id);
     }
 
+    @Get('byCategory/:id')
+    getByCategory(@Param() params):any{
+        return this.service.finAllByCategory(params.id);
+    }
+
     @Put(':id')
     update(@Body() data:Postal, @Param() params):any{
         return this.service.update(params.id,data);

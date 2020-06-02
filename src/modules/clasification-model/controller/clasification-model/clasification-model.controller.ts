@@ -22,6 +22,11 @@ export class ClasificationModelController {
         return this.service.findOne(params.id);
     }
 
+    @Get('byCategory/:id')
+    getModelByCategory(@Param() params):any{
+        return this.service.finAllByCategory(params.id);
+    }
+
     @Put(':id')
     update(@Body() data:ClasificationModel, @Param() params):any{
         return this.service.update(params.id,data);

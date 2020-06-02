@@ -24,6 +24,10 @@ export class ClasificationModelService {
         return await this.element.find();
     }
 
+    async finAllByCategory (id){
+        return await this.element.find({idCategoriaEstampa: id});
+    }
+
     async findOne(id:number){
         return await this.element.findOne(id);
     }

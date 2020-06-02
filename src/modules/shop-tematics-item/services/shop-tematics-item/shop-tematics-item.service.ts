@@ -24,6 +24,10 @@ export class ShopTematicsItemService {
         return await this.element.find();
     }
 
+    async finAllByTematic (id){
+        return await this.element.find({idTematica:id});
+    }
+
     async findOne(id:number){
         return await this.element.findOne(id);
     }

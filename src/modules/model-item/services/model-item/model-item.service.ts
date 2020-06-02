@@ -23,6 +23,10 @@ export class ModelItemService {
         return await this.element.find();
     }
 
+    async finAllByModel (id){
+        return await this.element.find({idMuestra: id});
+    }
+
     async findOne(id:number){
         return await this.element.findOne(id);
     }
