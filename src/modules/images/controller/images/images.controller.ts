@@ -15,6 +15,12 @@ export class ImagesController {
         return this.imageService.getImage(param.level,param.folder,param.name, param.type, param.folderLevel1).pipe(res);
     }
 
+    @Get('imageForCategory/:name/:type')
+    @Header('Content-Type', 'image/jpg')
+    ImageForCategory(@Res() res, @Param() param){
+        return this.imageService.getImageForCategoies(param.name, param.type).pipe(res);
+    }
+
     @Get('imageForText/:name')
     @Header('Content-Type', 'image/jpg')
     ImageForText(@Res() res, @Param() params){

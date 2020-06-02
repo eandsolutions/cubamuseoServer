@@ -38,6 +38,39 @@ export class ImagesService {
         }
     }
 
+    getImageForCategoies(name: string, type: string) {
+
+        let dir = this.globalImagesLocation;
+
+        if (type === 'collection') {
+            dir += '/menu/' + name;
+        } else
+            if (type == 'samples') {
+                dir += '/menuestampas/' + name
+            } else
+                if (type == 'tales') {
+                    dir += '/menuestampas/' + name
+                } else
+                    if (type == 'vpost') {
+                        dir += '/menupostales/' + name
+                    } else
+                        if (type == 'store')
+                            dir += '/menutienda/' + name;
+        try {
+            console.log(fs.existsSync(dir));
+            if (fs.existsSync(dir)) {
+
+                return this.resize(dir, 'jpg');
+            }
+
+            else {
+                return this.resize('src/assets/images/Error.png', 'png');
+            }
+        } catch (e) {
+            return this.resize('src/assets/images/Error.png', 'png');
+        }
+    }
+
     getImageColecciones() {
 
     }
@@ -52,24 +85,24 @@ export class ImagesService {
 
     getImage(level: number, folder: string, name: string, type: string, folderLevel1: string) {
         let dir = this.imageLocation;
-        if (type != "collection") {
-            if (type == 'samples') {
-                dir += '/Muestras/' + folder + '/' + name
-            } else
-            if(type == 'tales'){
-                dir += '/Estampas/' + folder + '/' + name
-            }else
-            if(type == 'vpost'){
-                dir += '/V-Posts/' + folder + '/' + name
-            }else
-                dir += '/Tienda' +'/'+ folder + '/' + name;
-        } else {
+        if (type == "collection") {
             if (level == 3)
                 dir += '/' + folder + '/' + name;
             if (level == 1 || level == 2)
                 dir += '/' + folderLevel1 + '/' + folder + '/' + name;
-
         }
+        if (type == 'samples') {
+            dir += '/Muestras/' + folder + '/' + name
+        } else
+            if (type == 'tales') {
+                dir += '/Estampas/' + folder + '/' + name
+            } else
+                if (type == 'vpost') {
+                    dir += '/V-Posts/' + folder + '/' + name
+                } else
+                    if (type == 'store')
+                        dir += '/Tienda' + '/' + folder + '/' + name;
+
         try {
             if (fs.existsSync(dir)) {
                 return this.resize(dir, 'jpg');
