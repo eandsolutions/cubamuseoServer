@@ -31,10 +31,10 @@ export class ImagesService {
             }
 
             else {
-                return this.resize('src/assets/images/Error.jpg', 'jpg');
+                return this.resize('src/assets/images/Error.png', 'png');
             }
         } catch (e) {
-            return this.resize('src/assets/images/Error.jpg', 'jpg');
+            return this.resize('src/assets/images/Error.png', 'png');
         }
     }
 
@@ -74,10 +74,10 @@ export class ImagesService {
             if (fs.existsSync(dir)) {
                 return this.resize(dir, 'jpg');
             } else
-                return this.resize('src/assets/images/Error.jpg', 'jpg');
+                return this.resize('src/assets/images/Error.png', 'png');
 
         } catch (e) {
-            return this.resize('src/assets/images/Error.jpg', 'jpg');
+            return this.resize('src/assets/images/Error.png', 'png');
         }
 
     }
