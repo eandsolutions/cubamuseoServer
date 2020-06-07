@@ -25,10 +25,11 @@ import { ShoppingCartModule } from './modules/shopping-cart/shopping-cart.module
 import { StampModule } from './modules/stamp/stamp.module';
 import { TextModule } from './modules/text/text.module';
 import { ImagesModule } from './modules/images/images.module';
+import { SearchModule } from './modules/search/search.module';
 
 
 @Module({
-  imports: [DatabaseModule, CategoryModule,ModelsModule, CategoryItemModule, CategoryPostalModule, CategoryStampModule, ClasificationModelModule, ClasificationStampModule, ItemModule, ModelModule, ModelItemModule, NewsModule, PostalModule, SectionModule, SectionCategoryModule, SendPostalModule, ShopItemModule, ShopTematicsModule, ShopTematicsItemModule, ShoppingCartModule, StampModule, TextModule, ImagesModule],
+  imports: [DatabaseModule, CategoryModule,ModelsModule, CategoryItemModule, CategoryPostalModule, CategoryStampModule, ClasificationModelModule, ClasificationStampModule, ItemModule, ModelModule, ModelItemModule, NewsModule, PostalModule, SectionModule, SectionCategoryModule, SendPostalModule, ShopItemModule, ShopTematicsModule, ShopTematicsItemModule, ShoppingCartModule, StampModule, TextModule, ImagesModule, SearchModule],
   controllers: [
     AppController
   ],
