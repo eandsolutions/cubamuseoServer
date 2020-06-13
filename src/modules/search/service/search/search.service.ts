@@ -19,7 +19,7 @@ export class SearchService {
     ) { }
 
     async findInText(query) {
-        return await this.Text.query('Select * from Texto where nombre like "%' + query +
+        return await this.Text.query('Select * from texto where nombre like "%' + query +
             '%" or descripcion like "%' + query + '%"')
     }
 
@@ -41,7 +41,7 @@ export class SearchService {
 
     async findInCollectionsCategory(query) {
         return await this.Shop.query('Select * from categoria where nombre like "%' + query +
-            '%" or titulo like "%' + query + '%" or texto like "%' + query + '%"')
+            '%" or titulo like "%' + query + '%" or descripcion like "%' + query + '%"')
 
     }
 

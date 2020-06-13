@@ -26,4 +26,10 @@ export class ImagesController {
     ImageForText(@Res() res, @Param() params){
         return this.imageService.getImageForTextInicial(params.name).pipe(res);
     }
+
+    @Get('imageInAllDirectory/:name')
+    @Header('Content-Type', 'image/jpg')
+    ImageInAllDirectory(@Res() res, @Param() params){
+        return this.imageService.findImage(params.name).pipe(res);
+    }
 }
