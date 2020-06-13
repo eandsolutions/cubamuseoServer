@@ -29,6 +29,10 @@ export class SectionCategoryService {
         return await this.element.find({idSeccion:id});
     }
 
+    async finOneByCategoryId (id:number){
+        return await this.element.findOne({idCategoria:id});
+    }
+
     async findOne(id:number){
         return await this.element.findOne(id);
     }

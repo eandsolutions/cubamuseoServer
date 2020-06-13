@@ -26,6 +26,11 @@ export class SectionCategoryController {
         return this.service.finAllBySectionId(params.id);
     }
 
+    @Get('byCategory/:id')
+    getOneByCategory(@Param() params): any {
+        return this.service.finOneByCategoryId(params.id);
+    }
+
     @Put(':id')
     update(@Body() data: SectionCategory, @Param() params): any {
         return this.service.update(params.id, data);
