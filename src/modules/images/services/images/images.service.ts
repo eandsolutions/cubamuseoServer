@@ -1,6 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import * as fs from 'fs'
 import * as sharp from 'sharp'
+import * as path from 'path'
 
 @Injectable()
 export class ImagesService {
@@ -114,6 +115,41 @@ export class ImagesService {
         }
 
     }
+
+    findImage(name) {
+        let directory = this.imageLocation;
+        let res = this.fromDir(directory, name);
+        return this.resize(res, 'png');
+    }
+
+    private fromDir(startPath, filter) {
+
+        //console.log('Starting from dir '+startPath+'/');
+        let res = 'src/assets/images/Error.png';
+        if (!fs.existsSync(startPath)) {
+            console.log("no dir ", startPath);
+            return;
+        }
+
+        var files = fs.readdirSync(startPath);
+        for (var i = 0; i < files.length; i++) {
+            var filename = path.join(startPath, files[i]);
+            var stat = fs.lstatSync(filename);
+            if (stat.isDirectory()) {
+                res = this.fromDir(filename, filter); //recurse
+                if (res != 'src/assets/images/Error.png')
+                    break
+            }
+            else if (filename.indexOf(filter) >= 0) {
+                //console.log('-- found: ', filename);
+                res = filename;
+                break;
+            }
+        };
+
+        return res;
+    };
+
 
     resize(path, format) {
         let readStream = fs.createReadStream(path);

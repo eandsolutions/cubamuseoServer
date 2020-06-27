@@ -25,6 +25,7 @@ import { StampModule } from './modules/stamp/stamp.module';
 import { TextModule } from './modules/text/text.module';
 import { ImagesModule } from './modules/images/images.module';
 import { MailModule } from './modules/mail/mail.module';
+import { SearchModule } from './modules/search/search.module';
 
 
 @Module({
@@ -51,6 +52,7 @@ import { MailModule } from './modules/mail/mail.module';
     StampModule,
     TextModule,
     ImagesModule,
+    SearchModule,
     MailModule
 
   ],
