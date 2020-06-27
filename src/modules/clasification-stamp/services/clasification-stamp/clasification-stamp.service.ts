@@ -21,11 +21,16 @@ export class ClasificationStampService {
     }
 
     async finAll (){
-        return await this.element.find();
+        return await this.element.find({order:{orden:1}});
     }
 
     async finAllByCategory(id:number){
-        return await this.element.find({idCategoriaEstampa:id});
+        return await this.element.find(
+            {
+                where:{ idCategoriaEstampa:id},
+                order: {orden:1} 
+               
+            });
     }
 
     async findOne(id:number){
