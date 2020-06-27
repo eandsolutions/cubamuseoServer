@@ -22,11 +22,15 @@ export class SectionCategoryService {
     }
 
     async finAll (){
-        return await this.element.find();
+        return await this.element.find({order:{orden:1}});
     }
 
     async finAllBySectionId (id:number){
-        return await this.element.find({idSeccion:id});
+        return await this.element.find({
+            where:{ idSeccion:id},
+            order: {orden:1} 
+           
+        });
     }
 
     async finOneByCategoryId (id:number){

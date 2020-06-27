@@ -25,11 +25,16 @@ export class CategoryItemService {
     }
 
     async finAll (){
-        return await this.element.find();
+        return await this.element.find({order:{orden:1}});
     }
 
     async finAllByCategory (id:number){
-        return await this.element.find({idCategoria:id});
+        return await this.element.find(
+            {
+                where:{ idCategoria:id},
+                order: {orden:1} 
+               
+            });
     }
 
     async findOne(id:number){

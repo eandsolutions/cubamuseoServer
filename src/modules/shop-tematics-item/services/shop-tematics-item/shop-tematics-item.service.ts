@@ -21,11 +21,16 @@ export class ShopTematicsItemService {
     }
 
     async finAll (){
-        return await this.element.find();
+        return await this.element.find({order:{orden:1}});
     }
 
     async finAllByTematic (id){
-        return await this.element.find({idTematica:id});
+        return await this.element.find(
+            {
+                where:{ idTematica:id},
+                order: {orden:1} 
+               
+            });
     }
 
     async findOne(id:number){

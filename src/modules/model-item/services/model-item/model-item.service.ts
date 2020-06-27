@@ -20,11 +20,14 @@ export class ModelItemService {
     }
 
     async finAll (){
-        return await this.element.find();
+        return await this.element.find({order:{orden:1}});
     }
 
     async finAllByModel (id){
-        return await this.element.find({idMuestra: id});
+        return await this.element.find({
+            where:{ idMuestra:id},
+            order: {orden:1} 
+        });
     }
 
     async findOne(id:number){
