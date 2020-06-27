@@ -1,4 +1,4 @@
 {
-    "imagesLocation": "../../cubamuseo/imagenes",
-    "globalImagesLocation": "../../cubamuseo/images"
+    "imagesLocation": "../cubamuseo/imagenes",
+    "globalImagesLocation": "../cubamuseo/images"
 }

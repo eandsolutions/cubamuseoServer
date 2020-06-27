@@ -31,8 +31,8 @@ import * as fs from 'fs'
             type: 'mysql',
             host: 'localhost',
             port: 3306,
-            username: 'root',
-            password: '',
+            username: 'Sandy',
+            password: 'lamisma',
             database: 'cubamuseo',
             entities: [
                 CategoryEntity,
