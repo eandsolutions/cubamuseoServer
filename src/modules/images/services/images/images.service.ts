@@ -71,7 +71,7 @@ export class ImagesService {
             return this.resize('src/assets/images/Error.png', 'png');
         }
     }
-
+/* 
     getImageColecciones() {
 
     }
@@ -82,7 +82,7 @@ export class ImagesService {
 
     getImageEstampa() {
 
-    }
+    } */
 
     getImage(level: number, folder: string, name: string, type: string, folderLevel1: string) {
         let dir = this.imageLocation;
@@ -117,8 +117,8 @@ export class ImagesService {
     }
 
     findImage(name) {
-        let directory = this.imageLocation;
-        let res = this.fromDir(directory, name);
+        const directory = this.imageLocation;
+        const res = this.fromDir(directory, name);
         return this.resize(res, 'png');
     }
 
@@ -131,10 +131,10 @@ export class ImagesService {
             return;
         }
 
-        var files = fs.readdirSync(startPath);
-        for (var i = 0; i < files.length; i++) {
-            var filename = path.join(startPath, files[i]);
-            var stat = fs.lstatSync(filename);
+        const files = fs.readdirSync(startPath);
+        for (let i = 0; i < files.length; i++) {
+            const filename = path.join(startPath, files[i]);
+            const stat = fs.lstatSync(filename);
             if (stat.isDirectory()) {
                 res = this.fromDir(filename, filter); //recurse
                 if (res != 'src/assets/images/Error.png')
@@ -152,7 +152,7 @@ export class ImagesService {
 
 
     resize(path, format) {
-        let readStream = fs.createReadStream(path);
+        const readStream = fs.createReadStream(path);
         let transform = sharp();
 
         if (format) {

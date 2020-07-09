@@ -19,11 +19,16 @@ export class PostalService {
     }
 
     async finAll() {
-        return await this.element.find();
+        return await this.element.find({ where: { publicada: 1 } });
     }
 
     async finAllByCategory(id: number) {
-        return await this.element.find({ idCategoria: id });
+        return await this.element.find({
+            where: [
+                { idCategoria: id },
+                { publicada: 1 }
+            ]
+        });
     }
 
     async findOne(id: number) {
