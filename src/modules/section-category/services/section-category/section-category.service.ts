@@ -7,41 +7,39 @@ import { SectionCategoryEntity } from '../../entity/section-category-entity';
 @Injectable()
 export class SectionCategoryService {
 
-    
-    constructor(@InjectRepository(SectionCategoryEntity) private readonly element:Repository<SectionCategoryEntity>){
+
+    constructor(@InjectRepository(SectionCategoryEntity) private readonly element: Repository<SectionCategoryEntity>) {
 
     }
 
-    async save(data:any){
+    async save(data: any) {
         await this.element.insert(data);
         return data;
     }
 
-    async update(id:number, data:any){
-        await this.element.update(id,data);
+    async update(id: number, data: any) {
+        await this.element.update(id, data);
     }
 
-    async finAll (){
-        return await this.element.find({order:{orden:1}});
+    async finAll() {
+        return await this.element.find({ order: { orden: 1 } });
     }
 
-    async finAllBySectionId (id:number){
-        return await this.element.find({
-            where:{ idSeccion:id},
-            order: {orden:1} 
-           
-        });
+    async finAllBySectionId(id: number) {
+        return await this.element.query('SELECT categoria.idCategoria, categoria.nombre, categoria.imagenGaleria, categoria.carpeta, '+
+         'seccion_categoria.sigloXIX FROM seccion_categoria INNER JOIN categoria on seccion_categoria.idCategoria = categoria.idCategoria'+
+         ' WHERE seccion_categoria.idSeccion = ' + id + ' AND categoria.publicada = 1 ORDER BY seccion_categoria.orden')        
     }
 
-    async finOneByCategoryId (id:number){
-        return await this.element.findOne({idCategoria:id});
+    async finOneByCategoryId(id: number) {
+        return await this.element.findOne({ idCategoria: id });
     }
 
-    async findOne(id:number){
+    async findOne(id: number) {
         return await this.element.findOne(id);
     }
 
-    async delete(id:number){
+    async delete(id: number) {
         return await this.element.delete(id);
     }
 

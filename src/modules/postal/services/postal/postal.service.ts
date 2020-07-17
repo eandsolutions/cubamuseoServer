@@ -23,12 +23,9 @@ export class PostalService {
     }
 
     async finAllByCategory(id: number) {
-        return await this.element.find({
-            where: [
-                { idCategoria: id },
-                { publicada: 1 }
-            ]
-        });
+        return await this.element.query('Select postal.idPostal, postal.nombre, postal.precio, postal.imagen'+
+        ' FROM postal WHERE postal.idCategoria = '+id+
+        ' AND postal.publicada =1 ORDER BY orden')
     }
 
     async findOne(id: number) {

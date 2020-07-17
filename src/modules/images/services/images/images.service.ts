@@ -49,16 +49,16 @@ export class ImagesService {
             if (type == 'samples') {
                 dir += '/menuestampas/' + name
             } else
-                if (type == 'tales') {
+                if (type == 'stamps') {
                     dir += '/menuestampas/' + name
                 } else
-                    if (type == 'vpost') {
+                    if (type == 'postcards') {
                         dir += '/menupostales/' + name
                     } else
                         if (type == 'store')
                             dir += '/menutienda/' + name;
         try {
-            console.log(fs.existsSync(dir));
+            console.log(dir);
             if (fs.existsSync(dir)) {
 
                 return this.resize(dir, 'jpg');
@@ -71,18 +71,6 @@ export class ImagesService {
             return this.resize('src/assets/images/Error.png', 'png');
         }
     }
-/* 
-    getImageColecciones() {
-
-    }
-
-    getImageMuestra() {
-
-    }
-
-    getImageEstampa() {
-
-    } */
 
     getImage(level: number, folder: string, name: string, type: string, folderLevel1: string) {
         let dir = this.imageLocation;
@@ -95,10 +83,10 @@ export class ImagesService {
         if (type == 'samples') {
             dir += '/Muestras/' + folder + '/' + name
         } else
-            if (type == 'tales') {
+            if (type == 'stamps') {
                 dir += '/Estampas/' + folder + '/' + name
             } else
-                if (type == 'vpost') {
+                if (type == 'postcards') {
                     dir += '/V-Posts/' + folder + '/' + name
                 } else
                     if (type == 'store')
