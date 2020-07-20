@@ -24,7 +24,6 @@ export class CategoryItemService {
         await this.element.update(id, data);
     }
 
-<<<<<<< HEAD
     async finAll() {
         return await this.element.find({ order: { orden: 1 } });
     }
@@ -34,18 +33,6 @@ export class CategoryItemService {
             {
                 where: { idCategoria: id },
                 order: { orden: 1}
-=======
-    async finAll (){
-        return await this.element.find({order:{orden:1}});
-    }
-
-    async finAllByCategory (id:number){
-        return await this.element.find(
-            {
-                where:{ idCategoria:id},
-                order: {orden:1} 
-               
->>>>>>> e18056a8f8fb9c224746cb2d0874c59b80e248f6
             });
     }
 
