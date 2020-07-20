@@ -7,29 +7,29 @@ import { CategoryEntity } from '../../entity/category-entity';
 @Injectable()
 export class CategoryService {
 
-    constructor(@InjectRepository(CategoryEntity) private readonly element:Repository<CategoryEntity>){
+    constructor(@InjectRepository(CategoryEntity) private readonly element: Repository<CategoryEntity>) {
 
     }
 
-    async save(data:any){
+    async save(data: any) {
         await this.element.insert(data);
         return data;
     }
 
-    async update(id:number, data:any){
-        await this.element.update(id,data);
+    async update(id: number, data: any) {
+        await this.element.update(id, data);
     }
 
-    async finAll (){
-        return await this.element.find();
+    async finAll() {
+        return await this.element.find({ where: { publicada: 1 } });
     }
 
-    async findOne(id:number){
+    async findOne(id: number) {
         return await this.element.findOne(id);
     }
 
-    async delete(id:number){
+    async delete(id: number) {
         return await this.element.delete(id);
     }
 
- }
+}

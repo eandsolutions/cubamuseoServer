@@ -20,7 +20,10 @@ export class CategoryStampService {
     }
 
     async finAll (){
-        return await this.element.find({order:{orden:1}});
+        return await this.element.find({
+            where: {publicada: 1},
+            order:{orden:1}
+        });
     }
 
     async findOne(id:number){

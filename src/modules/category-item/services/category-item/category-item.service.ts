@@ -29,11 +29,10 @@ export class CategoryItemService {
     }
 
     async finAllByCategory(id: number) {
-        return await this.element.find(
-            {
-                where: { idCategoria: id },
-                order: { orden: 1}
-            });
+        return await this.element.query('SELECT item.idItem, item.nombre,item.titulo, item.titulo, item.imagen, item.descripcion, ' +
+            'item.dimension, item.imageSize, item.emision, item.material, item.color, item.impresion, item.precio, item.publicado, item.login,' +
+            ' item.procedencia FROM categoria_item INNER JOIN item on categoria_item.idItem = item.idItem WHERE categoria_item.idCategoria = ' + id + ' AND' +
+            '  item.publicado = 1 ')
     }
 
     async findOne(id: number) {

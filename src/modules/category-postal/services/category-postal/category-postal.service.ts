@@ -6,28 +6,31 @@ import { CategoryPostalEntity } from '../../entity/category-postal-entity';
 
 @Injectable()
 export class CategoryPostalService {
-    constructor(@InjectRepository(CategoryPostalEntity) private readonly element:Repository<CategoryPostalEntity>){
+    constructor(@InjectRepository(CategoryPostalEntity) private readonly element: Repository<CategoryPostalEntity>) {
 
     }
 
-    async save(data:any){
+    async save(data: any) {
         await this.element.insert(data);
         return data;
     }
 
-    async update(id:number, data:any){
-        await this.element.update(id,data);
+    async update(id: number, data: any) {
+        await this.element.update(id, data);
     }
 
-    async finAll (){
-        return await this.element.find({order:{orden:1}});
+    async finAll() {
+        return await this.element.find({
+            where: {publicada: 1}, 
+            order: { orden: 1 } 
+        });
     }
 
-    async findOne(id:number){
+    async findOne(id: number) {
         return await this.element.findOne(id);
     }
 
-    async delete(id:number){
+    async delete(id: number) {
         return await this.element.delete(id);
     }
 }

@@ -21,7 +21,7 @@ export class NewsService {
     }
 
     async finAll (){
-        return await this.element.find();
+        return await this.element.find({where: {publicada: 1}});
     }
 
     async findOne(id:number){

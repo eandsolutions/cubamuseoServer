@@ -49,16 +49,16 @@ export class ImagesService {
             if (type == 'samples') {
                 dir += '/menuestampas/' + name
             } else
-                if (type == 'tales') {
+                if (type == 'stamps') {
                     dir += '/menuestampas/' + name
                 } else
-                    if (type == 'vpost') {
+                    if (type == 'postcards') {
                         dir += '/menupostales/' + name
                     } else
                         if (type == 'store')
                             dir += '/menutienda/' + name;
         try {
-            console.log(fs.existsSync(dir));
+            console.log(dir);
             if (fs.existsSync(dir)) {
 
                 return this.resize(dir, 'jpg');
@@ -72,18 +72,6 @@ export class ImagesService {
         }
     }
 
-    getImageColecciones() {
-
-    }
-
-    getImageMuestra() {
-
-    }
-
-    getImageEstampa() {
-
-    }
-
     getImage(level: number, folder: string, name: string, type: string, folderLevel1: string) {
         let dir = this.imageLocation;
         if (type == "collection") {
@@ -95,10 +83,10 @@ export class ImagesService {
         if (type == 'samples') {
             dir += '/Muestras/' + folder + '/' + name
         } else
-            if (type == 'tales') {
+            if (type == 'stamps') {
                 dir += '/Estampas/' + folder + '/' + name
             } else
-                if (type == 'vpost') {
+                if (type == 'postcards') {
                     dir += '/V-Posts/' + folder + '/' + name
                 } else
                     if (type == 'store')
@@ -117,8 +105,8 @@ export class ImagesService {
     }
 
     findImage(name) {
-        let directory = this.imageLocation;
-        let res = this.fromDir(directory, name);
+        const directory = this.imageLocation;
+        const res = this.fromDir(directory, name);
         return this.resize(res, 'png');
     }
 
@@ -131,10 +119,10 @@ export class ImagesService {
             return;
         }
 
-        var files = fs.readdirSync(startPath);
-        for (var i = 0; i < files.length; i++) {
-            var filename = path.join(startPath, files[i]);
-            var stat = fs.lstatSync(filename);
+        const files = fs.readdirSync(startPath);
+        for (let i = 0; i < files.length; i++) {
+            const filename = path.join(startPath, files[i]);
+            const stat = fs.lstatSync(filename);
             if (stat.isDirectory()) {
                 res = this.fromDir(filename, filter); //recurse
                 if (res != 'src/assets/images/Error.png')
@@ -152,7 +140,7 @@ export class ImagesService {
 
 
     resize(path, format) {
-        let readStream = fs.createReadStream(path);
+        const readStream = fs.createReadStream(path);
         let transform = sharp();
 
         if (format) {

@@ -11,6 +11,6 @@ export class MailController {
     @Post()
     send(@Body() data:any):any{
         console.log("entro al correo");
-        return this.mailService.mail(data.email, data.name,data.text);
+        return this.mailService.mail(data.from, data.name,data.text);
     }
 }
