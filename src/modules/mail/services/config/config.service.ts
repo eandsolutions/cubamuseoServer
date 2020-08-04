@@ -12,7 +12,7 @@ export class ConfigService {
         this.host="smtp.gmail.com";
         this.port= 587;
         this.secure="tls"
-        this.user="cubamuseoserver@gmail.com"
-        this.pass="cubamuseoserver2019*"
+        this.user="inf@cubamuseo.net"
+        this.pass="T3rr0r8080"
     }
 }

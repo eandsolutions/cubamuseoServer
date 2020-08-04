@@ -15,7 +15,7 @@ export class MailService {
     return this
       .mailerService
       .sendMail({
-        to: 'cubamuseoserver@gmail.com', // list of receivers
+        to: 'inf@cubamuseo.net', // list of receivers
         from: from, // sender address
         subject: subject, // Subject line
         text: text, // plaintext body
