@@ -12,8 +12,8 @@ import { PugAdapter } from '@nestjs-modules/mailer/dist/adapters/pug.adapter';
           host: 'smtp.gmail.com',
           port: 587,
           auth: {
-            user: 'cubamuseoserver@gmail.com',
-            pass: 'cubamuseoserver2019*',
+            user: 'inf@cubamuseo.net',
+            pass: 'T3rr0r8080',
           },
         },
         defaults: {
