@@ -27,7 +27,7 @@ export class ModelItemService {
         return await this.element.query('SELECT item.idItem, item.nombre,item.titulo, item.titulo, item.imagen,' +
             ' item.descripcion, item.dimension, item.imageSize, item.emision, item.material, item.color, item.impresion,' +
             ' item.precio, item.publicado, item.login, item.procedencia FROM muestra_item INNER JOIN item on muestra_item.idItem = item.idItem ' +
-            'WHERE muestra_item.idMuestra = ' + id + ' AND item.publicado = 1 ORDER BY muestra_item.orden')
+            'WHERE muestra_item.idMuestra = ' + id + ' AND item.publicado = 1 ORDER BY item.nombre')
     }
 
     async findOne(id: number) {
