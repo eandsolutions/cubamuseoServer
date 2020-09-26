@@ -22,21 +22,22 @@ export class CategoryService {
     }
 
     async finAll(lang: string) {
-        if (lang=='en') {
-            return await this.element_en.query('SELECT categoria_en.idCategoria, categoria_en.nombre, categoria_en.titulo, categoria_en.descripcion, categoria.cantImagenes, categoria.cantImagenesFila, '+
-            'categoria.carpeta, categoria.imagen, categoria.imagenGaleria, categoria.login, categoria.publicada'+ 
-             'FROM categoria_en'+ 
-               'INNER JOIN categoria on categoria_en.idCategoria = categoria.idCategoria'+ 
-                ' WHERE categoria.publicada = 1');
-        }
-        else {
+   
             return await this.element.find({ where: { publicada: 1 } });
-        }
-
     }
 
-    async findOne(id: number) {
-        return await this.element.findOne(id);
+    async findOne(lang:string,id: number) {
+        if(lang=='en'){
+            return await this.element.query('SELECT categoria_en.idCategoria, categoria.nombre AS nombre_es, categoria_en.nombre, categoria_en.descripcion, categoria_en.titulo, categoria.imagenGaleria,' + 
+            ' categoria.cantImagenesFila, categoria.imagen, categoria.publicada,categoria.carpeta' + 
+            ' FROM categoria_en' +
+            ' INNER JOIN categoria ON categoria.idCategoria = categoria_en.idCategoria' +
+            ' WHERE categoria_en.idCategoria = ' + id + '   AND categoria.publicada = 1');
+        }else{
+            return await this.element.findOne(id);
+        }
+
+
     }
 
     async delete(id: number) {

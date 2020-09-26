@@ -25,10 +25,19 @@ export class SectionCategoryService {
         return await this.element.find({ order: { orden: 1 } });
     }
 
-    async finAllBySectionId(id: number) {
-        return await this.element.query('SELECT categoria.idCategoria, categoria.nombre, categoria.imagenGaleria, categoria.carpeta, '+
-         'seccion_categoria.sigloXIX FROM seccion_categoria INNER JOIN categoria on seccion_categoria.idCategoria = categoria.idCategoria'+
-         ' WHERE seccion_categoria.idSeccion = ' + id + ' AND categoria.publicada = 1 ORDER BY seccion_categoria.orden')        
+    async finAllBySectionId(lang:string, id: number) {
+        if (lang=='en') {
+            return await this.element.query('SELECT categoria_en.idCategoria, categoria_en.nombre, categoria_en.titulo, categoria.imagenGaleria, categoria.carpeta,' + 
+            ' seccion_categoria.sigloXIX' + 
+            ' FROM seccion_categoria' + 
+            ' INNER JOIN categoria on seccion_categoria.idCategoria = categoria.idCategoria INNER JOIN categoria_en ON categoria.idCategoria = categoria_en.idCategoria' +
+            ' WHERE seccion_categoria.idSeccion = '+ id + ' AND categoria.publicada = 1 ORDER BY seccion_categoria.orden');
+        }else{
+            return await this.element.query('SELECT categoria.idCategoria, categoria.nombre, categoria.imagenGaleria, categoria.carpeta, '+
+            'seccion_categoria.sigloXIX FROM seccion_categoria INNER JOIN categoria on seccion_categoria.idCategoria = categoria.idCategoria'+
+            ' WHERE seccion_categoria.idSeccion = ' + id + ' AND categoria.publicada = 1 ORDER BY seccion_categoria.orden')
+        }
+                
     }
 
     async finOneByCategoryId(id: number) {

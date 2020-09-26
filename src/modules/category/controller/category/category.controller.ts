@@ -12,14 +12,14 @@ export class CategoryController {
         return this.service.save(data)
     }
 
-    @Get()
-    get():any{
-        return this.service.finAll();
+    @Get(':lang')
+    get(@Param() params):any{
+        return this.service.finAll(params.lang);
     }
 
-    @Get(':id')
+    @Get(':lang/:id')
     getOne(@Param() params):any{
-        return this.service.findOne(params.id);
+        return this.service.findOne(params.lang,params.id);
     }
 
     @Put(':id')

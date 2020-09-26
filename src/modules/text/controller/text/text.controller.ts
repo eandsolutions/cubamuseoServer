@@ -16,9 +16,9 @@ export class TextController {
         return this.service.finAll();
     }
 
-    @Get(':id')
+    @Get(':lang/:id')
     getOne(@Param() params): any {
-        return this.service.findOne(params.id);
+        return this.service.findOne(params.lang, params.id);
     }
 
     @Get('getByName/:name')

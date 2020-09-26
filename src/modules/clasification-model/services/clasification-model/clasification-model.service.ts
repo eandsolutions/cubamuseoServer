@@ -25,9 +25,11 @@ export class ClasificationModelService {
     }
 
     async finAllByCategory (id){
-        return await this.element.query('SELECT muestra.idMuestra, muestra.nombre, muestra.imagenGaleria, muestra.orden, muestra.carpeta'+
-        ' FROM clasificacion_muestra INNER JOIN muestra on clasificacion_muestra.idMuestra = muestra.idMuestra WHERE clasificacion_muestra.idCategoriaEstampa = '+id+
-        ' AND muestra.publicada = 1 ORDER BY muestra.orden')
+
+            return await this.element.query('SELECT muestra.idMuestra, muestra.nombre, muestra.imagenGaleria, muestra.orden, muestra.carpeta'+
+            ' FROM clasificacion_muestra INNER JOIN muestra on clasificacion_muestra.idMuestra = muestra.idMuestra WHERE clasificacion_muestra.idCategoriaEstampa = '+id+
+            ' AND muestra.publicada = 1 ORDER BY muestra.orden')
+              
     }
 
     async findOne(id:number){

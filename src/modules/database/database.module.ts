@@ -1,3 +1,6 @@
+import { TextEnEntity } from './../text/entity/text-en-entity';
+import { SectionEnEntity } from './../section/entity/section-en-entity';
+import { CategoryEnEntity } from './../category/entity/category-en-entity';
 import { CategoryPostalEntity } from './../category-postal/entity/category-postal-entity';
 import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
@@ -54,7 +57,10 @@ import * as fs from 'fs'
                 ShopTematicsItemEntity,
                 ShoppingCartEntity,
                 StampEntity,
-                TextEntity
+                TextEntity,
+                CategoryEnEntity,
+                SectionEnEntity,
+                TextEnEntity
             ],
             synchronize: false
         })
