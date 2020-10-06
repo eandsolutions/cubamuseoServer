@@ -91,7 +91,7 @@ export class ImagesService {
                 } else
                     if (type == 'store')
                         dir += '/Tienda' + '/' + folder + '/' + name;
-
+console.log(dir)
         try {
             if (fs.existsSync(dir)) {
                 return this.resize(dir, 'jpg');

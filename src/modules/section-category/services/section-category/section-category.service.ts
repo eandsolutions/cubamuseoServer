@@ -40,8 +40,18 @@ export class SectionCategoryService {
                 
     }
 
-    async finOneByCategoryId(id: number) {
-        return await this.element.findOne({ idCategoria: id });
+    async finOneByCategoryId(lang:string, id: number) {
+        if (lang=='en') {
+            return await this.element.query('SELECT seccion_en.idSeccion, seccion_en.nombre, seccion_en.titulo, seccion.imagenMenu, seccion.imagen,' + 
+            ' FROM seccion_categoria' + 
+            ' INNER JOIN seccion on seccion_categoria.idSeccion = seccion.idSeccion INNER JOIN seccion_en ON seccion.idSeccion = seccion_en.idSeccion' +
+            ' WHERE seccion_categoria.idCategoria = '+ id + ' AND seccion.publicada = 1 ORDER BY seccion_categoria.orden');
+        }else{
+            return await this.element.query('SELECT seccion.idSeccion, seccion.nombre, seccion.titulo, seccion.imagenMenu, seccion.imagen' + 
+            ' FROM seccion_categoria' + 
+            ' INNER JOIN seccion on seccion_categoria.idSeccion = seccion.idSeccion' +
+            ' WHERE seccion_categoria.idCategoria = '+ id + ' AND seccion.publicada = 1 ORDER BY seccion_categoria.orden')
+        }
     }
 
     async findOne(id: number) {

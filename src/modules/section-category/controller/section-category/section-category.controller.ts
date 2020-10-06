@@ -26,9 +26,9 @@ export class SectionCategoryController {
         return this.service.finAllBySectionId(params.lang,params.id);
     }
 
-    @Get('byCategory/:id')
+    @Get('byCategory/:lang/:id')
     getOneByCategory(@Param() params): any {
-        return this.service.finOneByCategoryId(params.id);
+        return this.service.finOneByCategoryId(params.lang,params.id);
     }
 
     @Put(':id')
