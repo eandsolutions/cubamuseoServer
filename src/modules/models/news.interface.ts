@@ -1,9 +1,8 @@
 export interface News {
-    idNoticia: number,
+    id: number,
     titulo: string,
-    texto: any,
+    descripcion: any,
     imagen: string,
-    orden: number,
     publicada: number,
-    fecha: Date
+    orden: number
 }

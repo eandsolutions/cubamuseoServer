@@ -26,6 +26,7 @@ import { TextModule } from './modules/text/text.module';
 import { ImagesModule } from './modules/images/images.module';
 import { MailModule } from './modules/mail/mail.module';
 import { SearchModule } from './modules/search/search.module';
+import { RelatedSitesModule } from './modules/related-sites/related-sites.module';
 
 
 @Module({
@@ -41,6 +42,7 @@ import { SearchModule } from './modules/search/search.module';
     ModelModule,
     ModelItemModule,
     NewsModule,
+    RelatedSitesModule,
     PostalModule,
     SectionModule,
     SectionCategoryModule,

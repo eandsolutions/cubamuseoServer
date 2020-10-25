@@ -1,3 +1,4 @@
+import { RelatedSitesEntity } from './../related-sites/entity/related-sites-entity';
 import { TextEnEntity } from './../text/entity/text-en-entity';
 import { SectionEnEntity } from './../section/entity/section-en-entity';
 import { CategoryEnEntity } from './../category/entity/category-en-entity';
@@ -34,9 +35,9 @@ import * as fs from 'fs'
             type: 'mysql',
             host: '127.0.0.1',
             port: 3306,
-            username: 'Sandy',
-            password: 'lamisma',
-            database: 'cubamuseo',
+            username: 'root',
+            password: '',
+            database: 'cubamuseo_upload',
             entities: [
                 CategoryEntity,
                 CategoryItemEntity,
@@ -48,6 +49,7 @@ import * as fs from 'fs'
                 ModelEntity,
                 ModelItemEntity,
                 NewsEntity,
+                RelatedSitesEntity,
                 PostalEntity,
                 SectionEntity,
                 SectionCategoryEntity,

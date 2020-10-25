@@ -1,17 +1,19 @@
 import { Entity, Column, PrimaryGeneratedColumn } from 'typeorm';
 
-@Entity('news')
+@Entity('related_sites')
 
-export class NewsEntity {
+export class RelatedSitesEntity {
 
     @PrimaryGeneratedColumn()
     id: number
     @Column()
-    titulo: string
+    url: string
+    @Column()
+    imagen: string
     @Column()
     descripcion: string
     @Column()
-    imagen: string
+    nombre: string
     @Column()
     publicada: number
     @Column()
