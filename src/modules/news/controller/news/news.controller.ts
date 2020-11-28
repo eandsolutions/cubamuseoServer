@@ -18,10 +18,15 @@ export class NewsController {
         return this.service.finAll();
     }
 
-    @Get(':id')
-    getOne(@Param() params):any{
-        return this.service.findOne(params.id);
+    @Get('last')
+    getLast():any{
+        return this.service.findLast();
     }
+
+    // @Get(':id')
+    // getOne(@Param() params):any{
+    //     return this.service.findOne(params.id);
+    // }
 
     @Put(':id')
     update(@Body() data:News, @Param() params):any{
