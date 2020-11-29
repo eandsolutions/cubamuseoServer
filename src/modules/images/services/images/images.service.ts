@@ -111,7 +111,7 @@ export class ImagesService {
     }
 
     findInNotice(folder, name) {
-        const directory = this.imageLocation + '/' + folder + '/';
+        const directory = this.imageLocation + '/Noticias/' + folder + '/';
         if (fs.existsSync(directory)) {
             return this.resize(directory + name, 'png');
         } else
