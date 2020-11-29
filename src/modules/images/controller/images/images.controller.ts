@@ -32,4 +32,10 @@ export class ImagesController {
     ImageInAllDirectory(@Res() res, @Param() params){
         return this.imageService.findImage(params.name).pipe(res);
     }
+
+    @Get('imageNotice/:folder/:name')
+    @Header('Content-Type', 'image/jpg')
+    ImageInNotice(@Res() res, @Param() params){
+        return this.imageService.findInNotice(params.folder,params.name).pipe(res);
+    }
 }

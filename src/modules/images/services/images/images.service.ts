@@ -91,7 +91,7 @@ export class ImagesService {
                 } else
                     if (type == 'store')
                         dir += '/Tienda' + '/' + folder + '/' + name;
-console.log(dir)
+        console.log(dir)
         try {
             if (fs.existsSync(dir)) {
                 return this.resize(dir, 'jpg');
@@ -108,6 +108,15 @@ console.log(dir)
         const directory = this.imageLocation;
         const res = this.fromDir(directory, name);
         return this.resize(res, 'png');
+    }
+
+    findInNotice(folder, name) {
+        const directory = this.imageLocation + '/' + folder + '/';
+        if (fs.existsSync(directory)) {
+            return this.resize(directory + name, 'png');
+        } else
+            return this.resize('src/assets/images/Error.png', 'png');
+        
     }
 
     private fromDir(startPath, filter) {
