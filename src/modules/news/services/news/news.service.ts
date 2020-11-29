@@ -31,6 +31,13 @@ export class NewsService {
         return await this.element.findOne(id);
     }
 
+    async findLast(){
+        return await this.element.query('SELECT news.id, news.titulo, news.descripcion, news.imagen, news.publicada ' +  
+        'FROM news WHERE news.publicada = 1 ' +
+        'ORDER BY id DESC LIMIT 1')
+    }
+
+
     async delete(id:number){
         return await this.element.delete(id);
     }

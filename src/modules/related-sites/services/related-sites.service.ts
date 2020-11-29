@@ -23,7 +23,7 @@ export class RelatedSitesService {
     async finAll(lang: string) {
         if (lang == 'en') {
             return await this.element.query('SELECT related_sites_en.id, related_sites_en.nombre, related_sites_en.descripcion,' +
-                ' related_sites.imagen, related_sites.orden, related_sites.publicada ' +
+                ' related_sites.imagen, related_sites.orden, related_sites.publicada, related_sites.url ' +
                 'FROM related_sites_en' +
                 ' INNER JOIN related_sites on related_sites_en.id = related_sites.id' +
                 ' WHERE related_sites.publicada = 1' +
