@@ -37,7 +37,7 @@ import * as fs from 'fs'
             port: 3306,
             username: 'any',
             password: 'anypass',
-            database: 'cubamuseo',
+            database: 'cubamuseo_download_site',
             entities: [
                 CategoryEntity,
                 CategoryItemEntity,
