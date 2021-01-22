@@ -27,6 +27,7 @@ import { ImagesModule } from './modules/images/images.module';
 import { MailModule } from './modules/mail/mail.module';
 import { SearchModule } from './modules/search/search.module';
 import { RelatedSitesModule } from './modules/related-sites/related-sites.module';
+import { VisitModule } from './modules/visit/visit.module';
 
 
 @Module({
@@ -55,7 +56,8 @@ import { RelatedSitesModule } from './modules/related-sites/related-sites.module
     TextModule,
     ImagesModule,
     SearchModule,
-    MailModule
+    MailModule,
+    VisitModule
 
   ],
   controllers: [
