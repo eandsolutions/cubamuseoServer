@@ -17,9 +17,9 @@ export class ClasificationStampController {
         return this.service.finAll();
     }
 
-    @Get('byCategory/:id')
+    @Get('byCategory/:id/:lang')
     getByCategory(@Param() params): any {
-        return this.service.finAllByCategory(params.id);
+        return this.service.finAllByCategory(params.id, params.lang);
     }
 
     @Get(':id')

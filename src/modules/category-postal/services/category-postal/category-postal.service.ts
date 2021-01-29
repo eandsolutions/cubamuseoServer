@@ -19,11 +19,20 @@ export class CategoryPostalService {
         await this.element.update(id, data);
     }
 
-    async finAll() {
-        return await this.element.find({
-            where: {publicada: 1}, 
-            order: { orden: 1 } 
-        });
+    async finAll(lang:string) {
+        if(lang == 'en'){
+            return await this.element.query('SELECT categoriapostal_en.idCategoriaPostal, categoriapostal_en.nombre, categoriapostal.nombre AS nombre_es,' +
+            ' categoriapostal_en.titulo,  categoriapostal.orden, categoriapostal.publicada, categoriapostal.cantImagenes, categoriapostal.imagenMenu' + 
+            ' FROM categoriapostal_en INNER JOIN categoriapostal ON categoriapostal_en.idCategoriaPostal = categoriapostal.idCategoriaPostal' +
+            ' WHERE categoriapostal.publicada = 1' +
+            ' ORDER BY categoriapostal.orden');
+        }else{
+            return await this.element.find({
+                where: {publicada: 1}, 
+                order: { orden: 1 } 
+            });
+        }
+     
     }
 
     async findOne(id: number) {

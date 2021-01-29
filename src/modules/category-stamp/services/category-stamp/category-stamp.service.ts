@@ -19,11 +19,20 @@ export class CategoryStampService {
         await this.element.update(id,data);
     }
 
-    async finAll (){
+    async finAll (lang:string){
+        if(lang=='en'){
+            return await this.element.query('SELECT categoriaestampa_en.idCategoriaEstampa, categoriaestampa.nombre AS nombre_es, categoriaestampa_en.nombre, categoriaestampa.imagenMenu,' + 
+            ' categoriaestampa.publicada' + 
+            ' FROM categoriaestampa_en' +
+            ' INNER JOIN categoriaestampa ON categoriaestampa.idCategoriaEstampa = categoriaestampa_en.idCategoriaEstampa' +
+            ' WHERE 1 AND categoriaestampa.publicada = 1' +
+            ' ORDER BY categoriaestampa.orden');
+        }else{
             return await this.element.find({
                 where: {publicada: 1},
                 order:{orden:1}
             });
+        }
     }
 
     async findOne(id:number){

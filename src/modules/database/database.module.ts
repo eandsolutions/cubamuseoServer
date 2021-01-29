@@ -27,6 +27,7 @@ import { StampEntity } from '../stamp/entity/stamp-entity';
 import { TextEntity } from '../text/entity/text-entity';
 import { VisitEntity } from '../visit/entity/visit-entity';
 import * as fs from 'fs'
+import { ModelEnEntity } from '../model/entity/model-entity-en';
 
 
 
@@ -64,7 +65,8 @@ import * as fs from 'fs'
                 VisitEntity,
                 CategoryEnEntity,
                 SectionEnEntity,
-                TextEnEntity
+                TextEnEntity,
+                ModelEnEntity
             ],
             synchronize: false
         })

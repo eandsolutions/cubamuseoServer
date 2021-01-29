@@ -13,9 +13,9 @@ export class CategoryPostalController {
         return this.service.save(data)
     }
 
-    @Get()
-    get():any{
-        return this.service.finAll();
+    @Get('/byLang/:lang')
+    get(@Param() params):any{
+        return this.service.finAll(params.lang);
     }
 
     @Get(':id')

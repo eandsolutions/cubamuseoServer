@@ -18,9 +18,9 @@ export class StampController {
         return this.service.finAll();
     }
 
-    @Get(':id')
+    @Get(':id/:lang')
     getOne(@Param() params): any {
-        return this.service.findOne(params.id);
+        return this.service.findOne(params.id,params.lang);
     }
 
     @Put(':id')

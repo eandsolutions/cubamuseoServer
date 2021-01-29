@@ -22,9 +22,9 @@ export class ClasificationModelController {
         return this.service.findOne(params.id);
     }
 
-    @Get('byCategory/:id')
+    @Get('byCategory/:id/:lang')
     getModelByCategory(@Param() params):any{
-        return this.service.finAllByCategory(params.id);
+        return this.service.finAllByCategory(params.id, params.lang);
     }
 
     @Put(':id')

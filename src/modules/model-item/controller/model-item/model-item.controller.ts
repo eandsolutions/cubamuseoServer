@@ -23,9 +23,9 @@ export class ModelItemController {
         return this.service.findOne(params.id);
     }
 
-    @Get('byModelId/:id')
+    @Get('byModelId/:id/:lang')
     getByModel(@Param() params): any {
-        return this.service.finAllByModel(params.id);
+        return this.service.finAllByModel(params.id, params.lang);
     }
 
     @Put(':id')
