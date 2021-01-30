@@ -20,7 +20,7 @@ export class ImagesService {
         })
     }
 
-    getImageForTextInicial(name: string) {
+    getImageForTextInicial(name: string, res) {
 
         let dir = this.globalImagesLocation;
         dir += '/home/' + name;
@@ -28,18 +28,18 @@ export class ImagesService {
             console.log(fs.existsSync(dir));
             if (fs.existsSync(dir)) {
 
-                return this.resize(dir, 'jpg');
+                return this.returnImage(dir, res);
             }
 
             else {
-                return this.resize('src/assets/images/Error.png', 'png');
+                return this.returnImage('src/assets/images/Error.png',res);
             }
         } catch (e) {
-            return this.resize('src/assets/images/Error.png', 'png');
+            return this.returnImage('src/assets/images/Error.png', res);
         }
     }
 
-    getImageForCategoies(name: string, type: string) {
+    getImageForCategoies(name: string, type: string, res) {
 
         let dir = this.globalImagesLocation;
 
@@ -61,18 +61,18 @@ export class ImagesService {
             console.log(dir);
             if (fs.existsSync(dir)) {
 
-                return this.resize(dir, 'jpg');
+                return this.returnImage(dir, res);
             }
 
             else {
-                return this.resize('src/assets/images/Error.png', 'png');
+                return this.returnImage('src/assets/images/Error.png', res);
             }
         } catch (e) {
-            return this.resize('src/assets/images/Error.png', 'png');
+            return this.returnImage('src/assets/images/Error.png', res);
         }
     }
 
-    getImage(level: number, folder: string, name: string, type: string, folderLevel1: string) {
+    getImage(level: number, folder: string, name: string, type: string, folderLevel1: string, res) {
         let dir = this.imageLocation;
         if (type == "collection") {
             if (level == 3)
@@ -94,27 +94,41 @@ export class ImagesService {
         console.log(dir)
         try {
             if (fs.existsSync(dir)) {
-                return this.resize(dir, 'jpg');
+                return this.returnImage(dir, res);
             } else
-                return this.resize('src/assets/images/Error.png', 'png');
+                return this.returnImage('src/assets/images/Error.png',res);
 
         } catch (e) {
-            return this.resize('src/assets/images/Error.png', 'png');
+            return this.returnImage('src/assets/images/Error.png',res);
         }
 
     }
 
-    findImage(name) {
-        const directory = this.imageLocation;
-        const res = this.fromDir(directory, name);
-        return this.resize(res, 'png');
+    findImage(name, res) {
+        const dir = this.imageLocation;
+        const resp = this.fromDir(dir, name);
+        if (fs.existsSync(resp))
+            return this.returnImage(dir, res);
     }
 
-    findInNotice(folder, name) {
-        const directory = this.imageLocation + '/Noticias/' + folder + '/'+ name;
-        console.log(directory)
-        return this.resize(directory, 'png');
-        
+    findInNotice(folder, name, res) {
+        const dir = this.imageLocation + '/Noticias/' + folder + '/' + name;
+        if (fs.existsSync(dir))
+            return this.returnImage(dir, res);
+        else
+            return this.returnImage('src/assets/images/Error.png', res);
+
+
+
+    }
+
+    private returnImage(dir: string, res: any) {
+        //const dir = this.uploadFolder + '/' + id + '/' + name;
+        fs.readFile(dir, function (err, data) {
+            if (err) throw err; // Fail if the file can't be read.            
+            res.writeHead(200, { 'Content-Type': 'image/jpeg' });
+            res.end(data); // Send the file data to the browser.        
+        });
     }
 
     private fromDir(startPath, filter) {

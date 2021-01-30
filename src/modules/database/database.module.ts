@@ -33,7 +33,7 @@ import * as fs from 'fs'
     imports: [
         TypeOrmModule.forRoot({
             type: 'mysql',
-            host: '127.0.0.1',
+            host: '188.68.49.122',
             port: 3306,
             username: 'Sandy',
             password: 'lamisma',
