@@ -24,11 +24,20 @@ export class ClasificationModelService {
         return await this.element.find({order:{orden:1}});
     }
 
-    async finAllByCategory (id){
-
+    async finAllByCategory (id, lang){
+        if(lang=='en'){
+            return await this.element.query('SELECT muestra_en.idMuestra, muestra.nombre AS nombre_es, muestra_en.nombre, muestra.imagenGaleria, muestra.orden, muestra.carpeta'+
+            ' FROM clasificacion_muestra' +
+            ' INNER JOIN muestra on clasificacion_muestra.idMuestra = muestra.idMuestra' + 
+            ' INNER JOIN muestra_en on muestra.idMuestra = muestra_en.idMuestra' +
+            ' WHERE clasificacion_muestra.idCategoriaEstampa = '+id+
+            ' AND muestra.publicada = 1 ORDER BY muestra.orden')
+        }else{
             return await this.element.query('SELECT muestra.idMuestra, muestra.nombre, muestra.imagenGaleria, muestra.orden, muestra.carpeta'+
             ' FROM clasificacion_muestra INNER JOIN muestra on clasificacion_muestra.idMuestra = muestra.idMuestra WHERE clasificacion_muestra.idCategoriaEstampa = '+id+
             ' AND muestra.publicada = 1 ORDER BY muestra.orden')
+        }
+            
               
     }
 

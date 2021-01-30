@@ -13,4 +13,11 @@ export class MailController {
         console.log("entro al correo");
         return this.mailService.mail(data.from, data.name,data.text);
     }
+
+    @Post('send_vpost')
+    sendVpost(@Body() data:any):any{
+        console.log("entro a enviar postal");
+        console.log(data.image)
+        return this.mailService.vpost(data.image, data.nombre_d, data.email_d, data.nombre, data.email, data.text);
+    }
 }

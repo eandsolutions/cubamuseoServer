@@ -28,8 +28,17 @@ export class StampService {
             });
     }
 
-    async findOne(id: number) {
-        return await this.element.findOne(id);
+    async findOne(id: number, lang:string) {
+        if(lang == 'en'){
+            return await this.element.query('SELECT estampa_en.idEstampa, estampa_en.nombre, estampa.nombre AS nombre_es, estampa_en.titulo, estampa_en.texto, estampa.imagenGaleria, estampa.publicada, estampa.orden, estampa.carpeta'+
+            ' FROM estampa_en' +
+            ' INNER JOIN estampa ON estampa_en.idEstampa = estampa.idEstampa' + 
+            ' WHERE estampa.publicada = 1 AND estampa_en.idEstampa = ' + id + 
+            ' ORDER BY estampa.orden');
+        }else{
+            return await this.element.findOne(id);
+        }
+        
     }
 
     async delete(id: number) {

@@ -24,10 +24,20 @@ export class ClasificationStampService {
         return await this.element.find({order:{orden:1}});
     }
 
-    async finAllByCategory(id:number){
+    async finAllByCategory(id:number, lang:string){
+        if(lang=='en'){
+            return await this.element.query('SELECT estampa_en.idEstampa, estampa.nombre AS nombre_es, estampa_en.nombre, estampa.imagenGaleria, estampa.orden, estampa.carpeta'+
+            ' FROM clasificacion_estampa' +
+            ' INNER JOIN estampa on clasificacion_estampa.idEstampa = estampa.idEstampa' + 
+            ' INNER JOIN estampa_en on estampa.idEstampa = estampa_en.idEstampa' +
+            ' WHERE clasificacion_estampa.idCategoriaEstampa = '+id+
+            ' AND estampa.publicada = 1 ORDER BY estampa.orden')
+        }else{
+
         return await this.element.query('SELECT estampa.idEstampa, estampa.nombre, estampa.imagenGaleria,'+
         ' estampa.orden, estampa.carpeta FROM clasificacion_estampa INNER JOIN estampa on clasificacion_estampa.idEstampa'+
         ' = estampa.idEstampa WHERE clasificacion_estampa.idCategoriaEstampa = '+id+' AND estampa.publicada = 1 ORDER BY estampa.orden')
+        }
     }
 
     async findOne(id:number){

@@ -25,8 +25,10 @@ import { ShopTematicsItemEntity } from '../shop-tematics-item/entity/shop-temati
 import { ShoppingCartEntity } from '../shopping-cart/entity/shopping-cart-entity';
 import { StampEntity } from '../stamp/entity/stamp-entity';
 import { TextEntity } from '../text/entity/text-entity';
-
+import { VisitEntity } from '../visit/entity/visit-entity';
 import * as fs from 'fs'
+import { ModelEnEntity } from '../model/entity/model-entity-en';
+
 
 
 @Module({
@@ -35,9 +37,9 @@ import * as fs from 'fs'
             type: 'mysql',
             host: '188.68.49.122',
             port: 3306,
-            username: 'Sandy',
-            password: 'lamisma',
-            database: 'cubamuseo',
+            username: 'any',
+            password: 'anypass',
+            database: 'cubamuseo_download_site',
             entities: [
                 CategoryEntity,
                 CategoryItemEntity,
@@ -60,9 +62,11 @@ import * as fs from 'fs'
                 ShoppingCartEntity,
                 StampEntity,
                 TextEntity,
+                VisitEntity,
                 CategoryEnEntity,
                 SectionEnEntity,
-                TextEnEntity
+                TextEnEntity,
+                ModelEnEntity
             ],
             synchronize: false
         })
