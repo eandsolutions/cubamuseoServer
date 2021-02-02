@@ -108,7 +108,7 @@ export class ImagesService {
         const dir = this.imageLocation;
         const resp = this.fromDir(dir, name);
         if (fs.existsSync(resp))
-            return this.returnImage(dir, res);
+            return this.returnImage(resp, res);
     }
 
     findInNotice(folder, name, res) {
@@ -123,6 +123,7 @@ export class ImagesService {
     }
 
     private returnImage(dir: string, res: any) {
+        console.log(dir)
         //const dir = this.uploadFolder + '/' + id + '/' + name;
         fs.readFile(dir, function (err, data) {
             if (err) throw err; // Fail if the file can't be read.            
