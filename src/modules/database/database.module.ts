@@ -35,7 +35,7 @@ import { ModelEnEntity } from '../model/entity/model-entity-en';
     imports: [
         TypeOrmModule.forRoot({
             type: 'mysql',
-            host: '127.0.0.1',
+            host: '188.68.49.122',
             port: 3306,
             username: 'any',
             password: 'anypass',
