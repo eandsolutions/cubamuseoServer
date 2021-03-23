@@ -30,7 +30,10 @@ export class SectionService {
                 ' ORDER BY seccion.orden');
         }
         else {
-            return await this.element.find({ where: { publicada: 1 } });
+            return await this.element.find({
+                where: {publicada: 1}, 
+                order: {orden: 1} 
+            });
         }
     }
 
