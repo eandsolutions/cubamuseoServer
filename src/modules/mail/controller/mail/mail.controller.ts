@@ -16,8 +16,6 @@ export class MailController {
 
     @Post('send_vpost')
     sendVpost(@Body() data:any):any{
-        console.log("entro a enviar postal");
-        console.log(data.image)
-        return this.mailService.vpost(data.image, data.nombre_d, data.email_d, data.nombre, data.email, data.text);
+        return this.mailService.vpost(data.image, data.nombre_d, data.email_d, data.nombre, data.email, data.mensaje);
     }
 }
