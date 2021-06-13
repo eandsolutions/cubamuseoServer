@@ -41,12 +41,18 @@ export class SearchService {
 
     async findInCollectionsCategory(query) {
         return await this.Shop.query('Select * from categoria where nombre like "%' + query +
-            '%" or titulo like "%' + query + '%" or descripcion like "%' + query + '%"')
+            '%" or titulo like "%' + query + '%" or descripcion like "%' + query + '%"or procedencia like "%' + query + '%"')
 
     }
 
     async findInCollectionsSection(query) {
         return await this.Shop.query('Select * from seccion where nombre like "%' + query +
+            '%" or titulo like "%' + query + '%" or descripcion like "%' + query + '%"')
+
+    }
+
+    async findInItems(query) {
+        return await this.Shop.query('Select * from item where nombre like "%' + query +
             '%" or titulo like "%' + query + '%" or descripcion like "%' + query + '%"')
 
     }
