@@ -56,4 +56,9 @@ export class SearchService {
             '%" or titulo like "%' + query + '%" or descripcion like "%' + query + '%"')
 
     }
+
+    async findCollectionByItem(id) {
+        return await this.Shop.query('Select * from categoria_item where idItem ='+id)
+
+    }
 }

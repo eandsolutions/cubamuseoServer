@@ -41,5 +41,10 @@ export class SearchController {
     inItems(@Param() data){
         return this.service.findInItems(data.query);
     }
+
+    @Get('getColletionByItem/:id')
+    getColletionByItem(@Param() data){
+        return this.service.findCollectionByItem(data.id);
+    }
     
 }
