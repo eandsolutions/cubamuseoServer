@@ -38,4 +38,10 @@ export class ImagesController {
     ImageInNotice(@Res() res, @Param() params){
         return this.imageService.findInNotice(params.folder,params.name, res);
     }
+
+    @Get('imageInSites/:folder/:name')
+    @Header('Content-Type', 'image/jpg')
+    ImageInSites(@Res() res, @Param() params){
+        return this.imageService.findInSites(params.folder,params.name, res);
+    }
 }

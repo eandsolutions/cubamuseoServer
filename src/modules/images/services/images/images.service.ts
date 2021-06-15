@@ -122,6 +122,14 @@ export class ImagesService {
 
     }
 
+    findInSites(folder, name, res) {
+        const dir = this.imageLocation + '/Sitios_Relacionados/' + folder + '/' + name;
+        if (fs.existsSync(dir))
+            return this.returnImage(dir, res);
+        else
+            return this.returnImage('src/assets/images/Error.png', res);
+    }
+
     private returnImage(dir: string, res: any) {
         console.log(dir)
         //const dir = this.uploadFolder + '/' + id + '/' + name;
