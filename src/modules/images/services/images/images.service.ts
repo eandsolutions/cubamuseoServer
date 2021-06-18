@@ -113,6 +113,7 @@ export class ImagesService {
 
     findInNotice(folder, name, res) {
         const dir = this.imageLocation + '/Noticias/' + folder + '/' + name;
+        console.log(dir)
         if (fs.existsSync(dir))
             return this.returnImage(dir, res);
         else
@@ -124,6 +125,7 @@ export class ImagesService {
 
     findInSites(folder, name, res) {
         const dir = this.imageLocation + '/Sitios_Relacionados/' + folder + '/' + name;
+        console.log(this.imageLocation + '/Sitios_Relacionados/' + folder + '/' + name)
         if (fs.existsSync(dir))
             return this.returnImage(dir, res);
         else
