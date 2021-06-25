@@ -111,25 +111,32 @@ export class ImagesService {
             return this.returnImage(resp, res);
     }
 
-    findInNotice(folder, name, res) {
+    findInNotice(folder:string, name: string, res:any) {
         const dir = this.imageLocation + '/Noticias/' + folder + '/' + name;
         console.log(dir)
-        if (fs.existsSync(dir))
-            return this.returnImage(dir, res);
-        else
-            return this.returnImage('src/assets/images/Error.png', res);
+        try {
+            if (fs.existsSync(dir)) {
+                return this.returnImage(dir, res);
+            } else
+                return this.returnImage('src/assets/images/Error.png',res);
 
-
+        } catch (e) {
+            return this.returnImage('src/assets/images/Error.png',res);
+        }
 
     }
 
-    findInSites(folder, name, res) {
+    findInSites(folder:string, name:string, res:any) {
         const dir = this.imageLocation + '/Sitios_Relacionados/' + folder + '/' + name;
-        console.log(this.imageLocation + '/Sitios_Relacionados/' + folder + '/' + name)
-        if (fs.existsSync(dir))
-            return this.returnImage(dir, res);
-        else
-            return this.returnImage('src/assets/images/Error.png', res);
+        try {
+            if (fs.existsSync(dir)) {
+                return this.returnImage(dir, res);
+            } else
+                return this.returnImage('src/assets/images/Error.png',res);
+
+        } catch (e) {
+            return this.returnImage('src/assets/images/Error.png',res);
+        }
     }
 
     private returnImage(dir: string, res: any) {
