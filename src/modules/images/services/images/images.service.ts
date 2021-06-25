@@ -128,6 +128,7 @@ export class ImagesService {
 
     findInSites(folder:string, name:string, res:any) {
         const dir = this.imageLocation + '/Sitios-Relacionados/' + folder + '/' + name;
+        console.log(dir)
         try {
             if (fs.existsSync(dir)) {
                 return this.returnImage(dir, res);
