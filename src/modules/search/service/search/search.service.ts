@@ -19,41 +19,36 @@ export class SearchService {
     ) { }
 
     async findInText(query) {
-        return await this.Text.query('Select * from texto where nombre like "' + query +
-            '" or descripcion like "' + query + '"')
+        return await this.Text.query('Select * from texto where CONTAINS(nombre,'+query+' ) or CONTAINS(descripcion,'+query+' )')
     }
 
     async findInShop(query) {
-        return await this.Shop.query('Select * from tienda_item where titulo like "' + query +
-            '" or nombre like "' + query + '"')
+        return await this.Shop.query('Select * from tienda_item where titulo like "%' + query +
+            '%" or nombre like "%' + query + '%"')
     }
 
     async findInModel(query) {
-        return await this.Shop.query('Select * from muestra where nombre like "' + query +
-            '" or titulo like "' + query + '" or descripcion like "' + query + '"')
+        return await this.Shop.query('Select * from muestra where CONTAINS(nombre,'+query+' ) or CONTAINS(titulo,'+query+' ) or CONTAINS(descripcion,'+query+' )')
     }
 
     async findInStamp(query) {
-        return await this.Shop.query('Select * from estampa where nombre like "' + query +
-            '" or titulo like "' + query + '" or texto like "' + query + '"')
+        return await this.Shop.query('Select * from estampa where CONTAINS(nombre,'+query+' ) or CONTAINS(titulo,'+query+' ) or CONTAINS(texto,'+query+' )')
 
     }
 
     async findInCollectionsCategory(query) {
-        return await this.Shop.query('Select * from categoria where nombre like "' + query +
-            '" or titulo like "' + query + '" or descripcion like "' + query + '"')
+        return await this.Shop.query('Select * from categoria where CONTAINS(nombre,'+query+' ) or CONTAINS(titulo,'+query+' ) or CONTAINS(descripcion,'+query+' )')
 
     }
 
     async findInCollectionsSection(query) {
-        return await this.Shop.query('Select * from seccion where nombre like "' + query +
-            '" or titulo like "' + query + '" or descripcion like "' + query + '"')
+        return await this.Shop.query('Select * from seccion where CONTAINS(nombre,'+query+' ) or CONTAINS(titulo,'+query+' ) or CONTAINS(descripcion,'+query+' )')
 
     }
 
     async findInItems(query) {
-        return await this.Shop.query('Select * from item where nombre like "' + query +
-            '" or titulo like "' + query + '" or descripcion like "' + query + '"')
+        return await this.Shop.query('Select * from item where nombre like "%' + query +
+            '%" or titulo like "%' + query + '%" or descripcion like "%' + query + '%"')
 
     }
 
