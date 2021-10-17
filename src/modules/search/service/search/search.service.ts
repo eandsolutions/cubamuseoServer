@@ -19,7 +19,8 @@ export class SearchService {
     ) { }
 
     async findInText(query) {
-        return await this.Text.query('Select * from texto where CONTAINS(nombre,"'+query+'" ) or CONTAINS(descripcion,"'+query+'" )')
+        return await this.Text.query('Select * from texto where nombre like "%' + query +
+            '%" or descripcion like "%' + query + '%"')
     }
 
     async findInShop(query) {
@@ -28,21 +29,25 @@ export class SearchService {
     }
 
     async findInModel(query) {
-        return await this.Shop.query('Select * from muestra where CONTAINS(nombre,"'+query+'" ) or CONTAINS(titulo,"'+query+'" ) or CONTAINS(descripcion,"'+query+'" )')
+        return await this.Shop.query('Select * from muestra where nombre like "%' + query +
+            '%" or titulo like "%' + query + '%" or descripcion like "%' + query + '%"')
     }
 
     async findInStamp(query) {
-        return await this.Shop.query('Select * from estampa where CONTAINS(nombre,"'+query+'" ) or CONTAINS(titulo,"'+query+'" ) or CONTAINS(texto,"'+query+'" )')
+        return await this.Shop.query('Select * from estampa where nombre like "%' + query +
+            '%" or titulo like "%' + query + '%" or texto like "%' + query + '%"')
 
     }
 
     async findInCollectionsCategory(query) {
-        return await this.Shop.query('Select * from categoria where CONTAINS(nombre,"'+query+'" ) or CONTAINS(titulo,"'+query+'" ) or CONTAINS(descripcion,"'+query+'" )')
+        return await this.Shop.query('Select * from categoria where nombre like "%' + query +
+            '%" or titulo like "%' + query + '%" or descripcion like "%' + query + '%"')
 
     }
 
     async findInCollectionsSection(query) {
-        return await this.Shop.query('Select * from seccion where CONTAINS(nombre,"'+query+'" ) or CONTAINS(titulo,"'+query+'" ) or CONTAINS(descripcion,"'+query+'" )')
+        return await this.Shop.query('Select * from seccion where nombre like "%' + query +
+            '%" or titulo like "%' + query + '%" or descripcion like "%' + query + '%"')
 
     }
 
